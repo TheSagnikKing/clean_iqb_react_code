@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { AdminLogoutAction } from '../../Redux/Actions/Admin/AuthAction'
@@ -9,8 +9,9 @@ import { MdKeyboardArrowDown } from 'react-icons/md'
 import { FiSettings } from 'react-icons/fi'
 import { RiAccountCircleFill } from 'react-icons/ri'
 import { BiLogOutCircle } from 'react-icons/bi'
+import api from '../../Redux/api/Api'
 
-const Header = () => {
+const Header = ({title}) => {
 
     const LoggedInMiddleware = useSelector(state => state.LoggedInMiddleware)
 

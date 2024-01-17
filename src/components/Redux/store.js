@@ -1,7 +1,7 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
 import { AdminForgetPasswordReducer, AdminLoginReducer, AdminLogoutReducer, AdminRegisterReducer, AdminResetPasswordReducer, LoggedInMiddlewareReducer, LoggedOutMiddlewareReducer } from "./Reducers/Admin/AuthReducer";
-import { barberLoginReducer, barberLogoutReducer, barberRegisterReducer,BarberLoggedInMiddlewareReducer, BarberLoggedOutMiddlewareReducer, BarberGoogleLoginReducer } from "./Reducers/Barber/BarberReducer";
+import { BarberLoggedInMiddlewareReducer, BarberLoggedOutMiddlewareReducer, BarberGoogleLoginReducer, BarberLoginReducer, BarberRegisterReducer, BarberLogoutReducer } from "./Reducers/Barber/BarberReducer";
 
 
 const rootReducer = combineReducers({
@@ -16,9 +16,9 @@ const rootReducer = combineReducers({
 
 
     //BARBER REDUCERS
-    barberLogin:barberLoginReducer,
-    barberRegister:barberRegisterReducer,
-    barberLogout:barberLogoutReducer,
+    BarberLogin:BarberLoginReducer,
+    BarberRegister:BarberRegisterReducer,
+    BarberLogout:BarberLogoutReducer,
     BarberLoggedInMiddleware:BarberLoggedInMiddlewareReducer,
     BarberLoggedOutMiddleware:BarberLoggedOutMiddlewareReducer,
     BarberGoogleLogin:BarberGoogleLoginReducer

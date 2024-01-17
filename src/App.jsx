@@ -10,6 +10,7 @@ const Signup = React.lazy(() => import('./components/Admin/Auth/Signup/Signup'))
 const ForgotPassword = React.lazy(() => import('./components/Admin/Auth/ForgotPassword/ForgotPassword'))
 const ResetPassword = React.lazy(() => import('./components/Admin/Auth/ResetPassword/ResetPassword'))
 const Adminauth = React.lazy(() => import('./components/Middleware/Adminauth'))
+const Barberauth = React.lazy(() => import('./components/Middleware/Barberauth'))
 
 const AdminDashboard = React.lazy(() => import('./components/Admin/Dashboard/Dashboard'))
 const BarberDashboard = React.lazy(() => import('./components/Barber/Dashboard/Dashboard'))
@@ -37,7 +38,7 @@ const App = () => {
 
 
             <Route path='/admin-dashboard' element={<Adminauth><Sidebar open={open} setOpen={setOpen} title={"Admin-Dashboard"}><AdminDashboard /></Sidebar></Adminauth>} />
-            <Route path='/barber-dashboard' element={<Sidebar open={open} setOpen={setOpen} title={"Admin-Dashboard"}><BarberDashboard /></Sidebar>}/>
+            <Route path='/barber-dashboard' element={<Barberauth><Sidebar open={open} setOpen={setOpen} title={"Barber-Dashboard"}><BarberDashboard /></Sidebar></Barberauth>}/>
 
             {/* <Route path="admin-dashboard" element={<Si}/>  */}
 

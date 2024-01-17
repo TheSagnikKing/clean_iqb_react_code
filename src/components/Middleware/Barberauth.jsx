@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { BarberLoggedInMiddlewareAction, BarberLoggedOutMiddlewareAction } from '../../redux/actions/BarberAuthAction'
+import { BarberLoggedInMiddlewareAction, BarberLoggedOutMiddlewareAction } from '../Redux/Actions/Barber/AuthAction'
+
 
 const Barberauth = ({ children }) => {
 
