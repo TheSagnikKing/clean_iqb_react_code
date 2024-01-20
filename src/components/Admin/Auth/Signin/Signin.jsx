@@ -15,7 +15,7 @@ import { messaging } from '../../../../Firebase/firebase';
 
 //Actions
 import { AdminGoogleloginAction, AdminLoginAction } from '../../../Redux/Actions/Admin/AuthAction'
-import { BarberGoogleloginAction } from '../../../Redux/Actions/Barber/AuthAction'
+import { BarberGoogleloginAction, BarberLoginAction } from '../../../Redux/Actions/Barber/AuthAction'
 
 const SignIn = () => {
 
@@ -127,7 +127,7 @@ const SignIn = () => {
             } else {
                 const signindata = { email: barberemail, password: barberpassword, webFcmToken }
                 console.log(signindata)
-                // dispatch(BarberLoginAction(signindata, navigate))
+                dispatch(BarberLoginAction(signindata, navigate))
             }
         } catch (error) {
             console.log(error);

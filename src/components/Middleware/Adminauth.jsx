@@ -10,15 +10,11 @@ const Auth = ({ children }) => {
 
     useEffect(() => {
         dispatch(LoggedOutMiddlewareAction(navigate))
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
-        dispatch(LoggedInMiddlewareAction())
-    })
-
-    // useEffect(() => {
-    //     console.log("yes Auth is working")
-    // },[])
+        dispatch(LoggedInMiddlewareAction(navigate))
+    },[dispatch])
 
     return (
         <div>{children}</div>

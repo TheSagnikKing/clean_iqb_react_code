@@ -187,18 +187,27 @@ export const BarberLoggedInMiddlewareAction = (navigate) => async (dispatch) => 
         })
         const { data } = await api.get(`/api/barber/barberLoggedinmiddleware`);
 
-        console.log(data)
+        console.log("BarberAuth",data)
 
         dispatch({
             type: LOGGED_IN_MIDDLEWARE_SUCCESS,
             payload: data
         });
+
     } catch (error) {
     
         dispatch({
             type: LOGGED_IN_MIDDLEWARE_FAIL,
             payload:error?.response?.data
         });
+
+        const barberLoggedIn = localStorage.getItem("barberLoggedIn")
+
+        if(error?.response?.data && error?.response?.data.user[0] == null && barberLoggedIn == "false"){
+            console.log("From Barber Auth ")
+            navigate("/admin-dashboard")
+            window.location.reload()
+        }
     }
 };
 

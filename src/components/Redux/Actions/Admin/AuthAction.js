@@ -187,18 +187,28 @@ export const LoggedInMiddlewareAction = (navigate) => async (dispatch) => {
         })
         const { data } = await api.get(`/api/admin/loggedinmiddleware`);
 
-        // console.log("ascascvdffsv",data)
+        console.log("ascascvdffsv",data)
 
         dispatch({
             type: LOGGED_IN_MIDDLEWARE_SUCCESS,
             payload: data
         });
+
+
     } catch (error) {
     
         dispatch({
             type: LOGGED_IN_MIDDLEWARE_FAIL,
             payload:error?.response?.data
         });
+
+        const userLoggedIn = localStorage.getItem("userLoggedIn")
+
+        if(error?.response?.data && error?.response?.data.user[0] == null && userLoggedIn == "false"){
+            console.log("From Admin Auth ")
+            navigate("/barber-dashboard")
+            window.location.reload()
+        }
     }
 };
 

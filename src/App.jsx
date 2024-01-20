@@ -13,7 +13,20 @@ const Adminauth = React.lazy(() => import('./components/Middleware/Adminauth'))
 const Barberauth = React.lazy(() => import('./components/Middleware/Barberauth'))
 
 const AdminDashboard = React.lazy(() => import('./components/Admin/Dashboard/Dashboard'))
+const AdminSalons = React.lazy(() => import('./components/Admin/Salon/Salon'))
+const AdminBarbers = React.lazy(() => import('./components/Admin/Barbers/Barbers'))
+const AdminCustomers = React.lazy(() => import('./components/Admin/Customers/Customers'))
+const AdminReports = React.lazy(() => import('./components/Admin/Reports/Reports'))
+const AdminAdvertisements = React.lazy(() => import('./components/Admin/Advertisements/Advertisements'))
+const AdminQueue = React.lazy(() => import('./components/Admin/Queue/Queue'))
+const AdminAppointments = React.lazy(() => import('./components/Admin/Appointments/Appointments')) 
+
+
 const BarberDashboard = React.lazy(() => import('./components/Barber/Dashboard/Dashboard'))
+const BarberReports = React.lazy(() => import('./components/Barber/Reports/Reports'))
+const BarberQueue = React.lazy(() => import('./components/Barber/Queue/QueueList/QueueList'))
+const BarberAppointment = React.lazy(() => import('./components/Barber/Appointment/Appointment'))
+const BarberNotification = React.lazy(() => import('./components/Barber/NotificationList/NotificationList'))
 
 const App = () => {
   const [open, setOpen] = useState(false)
@@ -26,19 +39,24 @@ const App = () => {
             {/* Intial Page */}
             <Route path="/" element={<div>
               <Link to="/admin-signin">Admin Signin</Link>&nbsp;&nbsp;
-              <Link to="/barber-signin">Barber Signin</Link>
             </div>} />
 
             {/* Admin Auth */}
             <Route path="/admin-signin" element={<Signin />} />
             <Route path="/admin-signup" element={<Signup />} />
             <Route path="/resetpassword" element={<ForgotPassword />} />
-            <Route path="/resetnewpassword/:token" element={<ResetPassword/>}/>
+            <Route path="/resetpassword/:token" element={<ResetPassword/>}/>
 
 
 
             <Route path='/admin-dashboard' element={<Adminauth><Sidebar open={open} setOpen={setOpen} title={"Admin-Dashboard"}><AdminDashboard /></Sidebar></Adminauth>} />
-            <Route path='/barber-dashboard' element={<Barberauth><Sidebar open={open} setOpen={setOpen} title={"Barber-Dashboard"}><BarberDashboard /></Sidebar></Barberauth>}/>
+            <Route path='/salon/salonlist' element={<Adminauth><Sidebar open={open} setOpen={setOpen} title={"Salons"}><AdminSalons /></Sidebar></Adminauth>} />
+            <Route path='/barber/dashboard2' element={<Adminauth><Sidebar open={open} setOpen={setOpen} title={"Barbers"}><AdminBarbers /></Sidebar></Adminauth>} />
+            <Route path='/customer/dashboard3' element={<Adminauth><Sidebar open={open} setOpen={setOpen} title={"Customers"}><AdminCustomers /></Sidebar></Adminauth>} />
+            <Route path='/admin/reports' element={<Adminauth><Sidebar open={open} setOpen={setOpen} title={"Reports"}><AdminReports /></Sidebar></Adminauth>} />
+            <Route path='/advertisement' element={<Adminauth><Sidebar open={open} setOpen={setOpen} title={"Advertisements"}><AdminAdvertisements /></Sidebar></Adminauth>} />
+            <Route path='/queue' element={<Adminauth><Sidebar open={open} setOpen={setOpen} title={"Queue"}><AdminQueue /></Sidebar></Adminauth>} />
+            <Route path='/appoinment' element={<Adminauth><Sidebar open={open} setOpen={setOpen} title={"Appointments"}><AdminAppointments /></Sidebar></Adminauth>} />
 
             {/* <Route path="admin-dashboard" element={<Si}/>  */}
 
@@ -78,6 +96,12 @@ const App = () => {
 
             {/* Admin Page END  ====================================*/}
 
+
+            <Route path='/barber-dashboard' element={<Barberauth><Sidebar open={open} setOpen={setOpen} title={"Barber-Dashboard"}><BarberDashboard /></Sidebar></Barberauth>}/>
+            <Route path='/barber/reports' element={<Barberauth><Sidebar open={open} setOpen={setOpen} title={"Reports"}><BarberReports /></Sidebar></Barberauth>}/>
+            <Route path='/barber/queuelist' element={<Barberauth><Sidebar open={open} setOpen={setOpen} title={"Queue"}><BarberQueue /></Sidebar></Barberauth>}/>
+            <Route path='/barber/appoinment' element={<Barberauth><Sidebar open={open} setOpen={setOpen} title={"Appointment"}><BarberAppointment /></Sidebar></Barberauth>}/>
+            <Route path='/barber/allnotification' element={<Barberauth><Sidebar open={open} setOpen={setOpen} title={"Notification"}><BarberNotification /></Sidebar></Barberauth>}/>
           </Routes>
         </Suspense>
       </BrowserRouter>

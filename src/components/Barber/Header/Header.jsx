@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
+import "./Header.css"
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { CiSearch } from 'react-icons/ci'
@@ -11,7 +12,7 @@ import { BiLogOutCircle } from 'react-icons/bi'
 import api from '../../Redux/api/Api'
 import { BarberLogoutAction } from '../../Redux/Actions/Barber/AuthAction'
 
-const Header = ({ title }) => {
+const Header = memo(({ title, navigate, dispatch }) => {
 
   const LoggedInMiddleware = useSelector(state => state.LoggedInMiddleware)
 
@@ -61,14 +62,12 @@ const Header = ({ title }) => {
 
   }
 
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-
   const logoutHandler = async () => {
     dispatch(BarberLogoutAction(navigate))
   }
   return (
     <div className="navright">
+      {console.log("rendering barber header")}
       <div className="navright_left_div">
         <b style={{ color: "rgba(0,0,0,0.6)" }}>{title}</b>
       </div>
@@ -142,7 +141,7 @@ const Header = ({ title }) => {
           </div>
 
           <div className="navprofile_detail">
-            <b>Sagnik</b>
+            <b>{LoggedInMiddleware?.user && LoggedInMiddleware?.user[0].name}</b>
             <p>Barber</p>
           </div>
 
@@ -175,6 +174,6 @@ const Header = ({ title }) => {
       </div>
     </div>
   )
-}
+})
 
 export default Header

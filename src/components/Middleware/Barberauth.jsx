@@ -11,11 +11,11 @@ const Barberauth = ({ children }) => {
 
     useEffect(() => {
         dispatch(BarberLoggedOutMiddlewareAction(navigate))
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
-        dispatch(BarberLoggedInMiddlewareAction())
-    })
+        dispatch(BarberLoggedInMiddlewareAction(navigate))
+    },[dispatch])
 
     return (
         <div>{children}</div>
